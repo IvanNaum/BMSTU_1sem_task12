@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    #sql {
+        width: 500px;
+    }
+
+    .color_red {
+        color: red;
+    }
+</style>
+
+<form action="" method="post">
+    <h3>SQL-инъекции</h3>
+    <p class="color_red">Осторожно, это опасно!!!</p>
+    <label for="sql">Введите SQL-иннструкцию:</label>
+    <textarea id="sql" name="sql" type="text">{{ sql_req }}</textarea>
+    <button type="submit">Выполнить</button>
+</form>
+
+{% if students %}
+<table>
+    {% for row in students %}
+    <tr>
+        {% for i in row %}
+        <td>{{ i }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+
+{% endblock %}

@@ -49,3 +49,16 @@ def add():
                 messages = ['Введите все необходимые поля корректно']
 
     return render_template("add.html", messages=messages, form_data=student)
+
+
+@app.route("/injection", methods=["post", "get"])
+def injection():
+    sql_req = ''
+    students = []
+
+    if request.method == "POST":
+        sql_req = request.form.get('sql')
+        students = db.engine.execute(sql_req)
+        print(students)
+
+    return render_template("injection.html", sql_req=sql_req, students=students)
