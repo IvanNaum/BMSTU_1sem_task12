@@ -1,0 +1,11 @@
+.DS_Store
+
+student_app/db/*
+
+.idea
+venv
+
+**/.env
+**/__pycache__
+**/*.db
+**/ngrok

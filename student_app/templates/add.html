@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    input {
+        width: 150px;
+    }
+</style>
+
+<form action="" method="post">
+    <h3>Добавить студента</h3>
+    <div class="wrapper">
+        <div class="row">
+            <label for="student_id">Номер зачетной книжки*:</label>
+            <input id="student_id" name="student_id" type="text" value="{% if form_data.get('student_id') %}{{ form_data.get('student_id') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="surname">Фамилия*:</label>
+            <input id="surname" name="surname" type="text" value="{% if form_data.get('surname') %}{{ form_data.get('surname') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="name">Имя*:</label>
+            <input id="name" name="name" type="text" value="{% if form_data.get('name') %}{{ form_data.get('name') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="patronymic">Отчество:</label>
+            <input id="patronymic" name="patronymic" type="text" value="{% if form_data.get('patronymic') %}{{ form_data.get('patronymic') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="age">Возраст*:</label>
+            <input id="age" name="age" type="number" min="16" max="99" value="{% if form_data.get('age') %}{{ form_data.get('age') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="faculty">Факультет*:</label>
+            <input id="faculty" name="faculty" type="text" value="{% if form_data.get('faculty') %}{{ form_data.get('faculty') }}{% endif %}">
+        </div>
+        <div class="row">
+            <label for="course">Курс*:</label>
+            <input id="course" name="course" type="number" min="1" max="6" value="{% if form_data.get('course') %}{{ form_data.get('course') }}{% endif %}">
+        </div>
+    </div>
+
+    {% if messages %}
+    {% for mes in messages %}
+    <p style="color: red;">{{mes}}</p>
+    {% endfor %}
+    {% endif %}
+
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}
