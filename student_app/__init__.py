@@ -10,5 +10,5 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 db = SQLAlchemy(app)
 
-from student_app.tables import *
-import student_app.views
+from .tables import *
+from .views import *

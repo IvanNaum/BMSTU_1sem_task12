@@ -1,9 +1,9 @@
 import sqlalchemy
 from flask import render_template, request
 
-from student_app import app
-from student_app import db
-from student_app import Student
+from . import app
+from . import db
+from . import Student
 
 
 @app.route('/')
