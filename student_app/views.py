@@ -53,12 +53,16 @@ def add():
 
 @app.route("/injection", methods=["post", "get"])
 def injection():
+    message = ''
     sql_req = ''
     students = []
 
     if request.method == "POST":
         sql_req = request.form.get('sql')
-        students = db.engine.execute(sql_req)
-        print(students)
-
-    return render_template("injection.html", sql_req=sql_req, students=students)
+        try:
+            result = db.engine.execute(sql_req)
+            if result.returns_rows:
+                students = result
+        except:
+            message = 'Что-то пошло не так'
+    return render_template("injection.html", sql_req=sql_req, students=students, message=message)

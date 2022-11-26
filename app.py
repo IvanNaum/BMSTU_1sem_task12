@@ -2,8 +2,11 @@ import os
 
 from student_app import app, db, Student
 
+if not os.path.isdir('student_app/db'):
+    os.mkdir('student_app/db')
+
 if not os.path.isfile("student_app/db/student.sqlite"):
-    '''Создание(Модификация) соответствующей базы данных и таблицы из   заготовленных шаблонов'''
+    '''Создание(Модификация) соответствующей базы данных и таблицы из заготовленных шаблонов'''
     with app.app_context():
         db.create_all()
 
@@ -25,5 +28,5 @@ if not os.path.isfile("student_app/db/student.sqlite"):
         print(*res, sep="\n")
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 8000))
+    port = int(os.environ.get('PORT', 5050))
     app.run(host="0.0.0.0", port=port)
