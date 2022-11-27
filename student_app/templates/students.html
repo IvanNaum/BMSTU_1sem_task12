@@ -3,17 +3,12 @@
 
 <table>
     <tr>
-        <th>Номер зачетной книжки</th>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Отчество</th>
-        <th>Возраст</th>
-        <th>Факультет</th>
-        <th>Курс </th>
+        {% for i in col_names %}
+        <th>{{ i }}</th>
+        {% endfor %}
     </tr>
 
     {% for i in students %}
-
     <tr>
         <td>{{ i['student_id'] }}</td>
         <td>{{ i['surname'] }}</td>
@@ -22,9 +17,7 @@
         <td>{{ i['age'] }}</td>
         <td>{{ i['faculty'] }}</td>
         <td>{{ i['course'] }} курс</td>
-
     </tr>
-
     {% endfor %}
 </table>
 

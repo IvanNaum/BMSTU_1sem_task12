@@ -9,18 +9,19 @@ from . import Student
 @app.route('/')
 def index():
     content = list()
-    students = db.engine.execute('SELECT * FROM student')
+    students = db.engine.execute('SELECT student_id, surname, name, patronymic, age, faculty, course FROM student')
+    col_names = list(students.keys())
     for i in students:
         content.append({
-            "student_id": i[1],
-            "surname": i[2],
-            "name": i[3],
-            "patronymic": i[4],
-            "age": i[5],
-            "faculty": i[6],
-            "course": i[7]
+            "student_id": i[0],
+            "surname": i[1],
+            "name": i[2],
+            "patronymic": i[3],
+            "age": i[4],
+            "faculty": i[5],
+            "course": i[6]
         })
-    return render_template("students.html", students=content)
+    return render_template("students.html", col_names=col_names, students=content)
 
 
 @app.route("/add", methods=["post", "get"])
